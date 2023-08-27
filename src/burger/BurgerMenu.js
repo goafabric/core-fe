@@ -32,7 +32,7 @@ const BurgerMenu = () => {
   const menuItems = [
     { id: 1, display: 'Diagnosis', endpoint: 'http://localhost:50600/diagnosis/findByDisplay?display=' },
     { id: 2, display: 'Insurances', endpoint: 'http://localhost:50600/insurances/findByDisplay?display=' },
-    { id: 2, display: 'Chargeitems', endpoint: 'http://localhost:50600/insurances/findByDisplay?chargeitems=' },
+    { id: 3, display: 'Chargeitems', endpoint: 'http://localhost:50600/chargeitems/findByDisplay?display=' },
     // Add more menu items here with their corresponding endpoints
   ];
 

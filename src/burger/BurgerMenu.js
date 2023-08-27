@@ -7,6 +7,7 @@ const BurgerMenu = () => {
   const [selectedItem, setSelectedItem] = useState(null);
   const [apiData, setApiData] = useState([]);
   const [apiEndpoint, setApiEndpoint] = useState(null);
+  const [searchText, setSearchText] = useState('');
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -29,14 +30,22 @@ const BurgerMenu = () => {
 
   const menuItems = [
     { id: 1, display: 'Diagnosis', endpoint: 'http://localhost:50600/diagnosis/findByDisplay?display=' },
-    { id: 2, display: 'Insurances', endpoint: 'http://localhost:50600/insurances/findByDisplay?display=a' },
-    { id: 2, display: 'Chargeitems', endpoint: 'http://localhost:50600/chargeitems/findByDisplay?display=' },
+    { id: 2, display: 'Insurances', endpoint: 'http://localhost:50600/insurances/findByDisplay?display=' },
+    { id: 2, display: 'Chargeitems', endpoint: 'http://localhost:50600/insurances/findByDisplay?chargeitems=' },
     // Add more menu items here with their corresponding endpoints
   ];
 
   const onItemClick = (item) => {
     setSelectedItem(item);
-    setApiEndpoint(item.endpoint);
+    setApiEndpoint(item.endpoint + searchText);
+  };
+
+  const handleSearchChange = (event) => {
+    const searchText = event.target.value;
+    setSearchText(searchText);
+    if (selectedItem) {
+      setApiEndpoint(selectedItem.endpoint + searchText);
+    }
   };
 
   return (
@@ -54,6 +63,14 @@ const BurgerMenu = () => {
             </li>
           ))}
         </ul>
+      </div>
+      <div className="search-field">
+        <input
+          type="text"
+          placeholder="Search..."
+          value={searchText}
+          onChange={handleSearchChange}
+        />
       </div>
       {selectedItem && (
         <div className="table">

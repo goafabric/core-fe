@@ -1,3 +1,7 @@
+# docker run
+
+docker run --pull always --name catalog-service-native -e 'security.authentication.enabled=false' --rm -p50600:50600 goafabric/catalog-service-native-arm64v8:1.0.4 -Xmx32m
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
@@ -68,3 +72,4 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+                

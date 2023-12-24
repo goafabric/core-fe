@@ -4,13 +4,44 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Main</title>
+
+    <style>
+        body {
+            display: flex;
+            height: 100vh;
+            margin: 0;
+        }
+
+        #my-sidebar {
+            flex: 1;
+            padding: 20px;
+            background-color: #f0f0f0;
+        }
+
+        #my-content {
+            flex: 5;
+            padding: 20px;
+        }
+
+        #my-content iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+    </style>
 </head>
 
 <body>
-    <a href="catalog/catalog.html?url=/diagnosis/findByDisplay?display=a">Diagnosis</a>
-    <p></p>
-    <a href="catalog/catalog.html?url=/insurances/findByDisplay?display=a">Insurances</a>
-    <p></p>
-    <a href="catalog/catalog.html?url=/chargeitems/findByDisplay?display=">Chargeitems</a>
+    <div id="my-sidebar">
+        <a href="catalog/catalog.html?url=/chargeitems/findByDisplay?display=" target="catalogFrame">Chargeitems</a>
+        <p></p>
+        <a href="catalog/catalog.html?url=/diagnosis/findByDisplay?display=a" target="catalogFrame">Diagnosis</a>
+        <p></p>
+        <a href="catalog/catalog.html?url=/insurances/findByDisplay?display=a" target="catalogFrame">Insurances</a>
+    </div>
+
+    <div id="my-content">
+        <iframe name="catalogFrame" src="catalog/catalog.html?url=/chargeitems/findByDisplay?display="></iframe>
+    </div>
 </body>
 </html>

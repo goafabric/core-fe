@@ -1,3 +1,9 @@
+function performSearch() {
+    var searchInput = document.getElementById('search').value;
+    var url = new URL(window.location.href).searchParams.get('url');
+    loadCatalog('http://localhost:50600/' + url + "?display=" + searchInput);
+}
+
 function loadCatalog(url) {
     fetch(url).then(response => response.json()).then(data => updateTableBody(data));
 }
@@ -15,14 +21,6 @@ function updateTableBody(data) {
     var tbody = document.getElementById('catalogTableBody');
     tbody.innerHTML = html;
 }
-
-function performSearch() {
-    var searchInput = document.getElementById('search').value;
-    var url = new URL(window.location.href).searchParams.get('url');
-    loadCatalog('http://localhost:50600' + url + "?display=" + searchInput);
-}
-
-/* main */
 
 document.addEventListener('DOMContentLoaded', function () {
     performSearch()

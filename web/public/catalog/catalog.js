@@ -1,7 +1,8 @@
+let catalogType = ""
+
 function performSearch() {
     var searchInput = document.getElementById('search').value;
-    var url = new URL(window.location.href).searchParams.get('url');
-    loadCatalog('http://localhost:50600/' + url + "?display=" + searchInput);
+    loadCatalog('http://localhost:50600/' + catalogType + "/findByDisplay?display=" + searchInput);
 }
 
 function loadCatalog(url) {
@@ -22,7 +23,12 @@ function updateTableBody(data) {
     tbody.innerHTML = html;
 }
 
-document.addEventListener('DOMContentLoaded', function () {
+function setCatalogType(catalog) {
+    catalogType = catalog
     performSearch()
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+    setCatalogType('chargeitems')
 });
 

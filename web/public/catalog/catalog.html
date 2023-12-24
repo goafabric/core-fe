@@ -7,9 +7,18 @@
 
     <script src="catalog.js"></script>
     <link rel="stylesheet" href="catalog.css">
+    <link rel="stylesheet" href="tab.css">
 </head>
 
 <body>
+    <div class="tab">
+        <button class="tablinks" onclick="setCatalogType('chargeitems')">Chargeitems</button>
+        <button class="tablinks" onclick="setCatalogType('diagnosis')">Diagnosis</button>
+        <button class="tablinks" onclick="setCatalogType('insurances')">Insurances</button>
+    </div>
+
+    <p></p>
+
     <div id="search-container">
         <label for="search">Search </label>
         <input type="text" id="search" oninput="performSearch()">

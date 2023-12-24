@@ -3,43 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fetch API Example</title>
+    <title>Catalogs</title>
 </head>
 
 <body>
-
-<button onclick="loadCatalog('http://localhost:50600/insurances/findByDisplay?display=a')">Insurances</button>
-<button onclick="loadCatalog('http://localhost:50600/diagnosis/findByDisplay?display=a')">Diagnosis</button>
-
-<table id="catalogTable">
-    <thead>
-    <tr>
-        <th style="min-width: 150px; text-align: left;">Code</th>
-        <th style="min-width: 150px; text-align: left;">Display</th>
-        <th style="min-width: 150px; text-align: left;">Short</th>
-    </tr>
-    </thead>
-    <tbody id="catalogTableBody">
-    </tbody>
-    <script>
-        function loadCatalog(url) {
-            fetch(url).then(response => response.json()).then(data => updateTableBody(data));
-        }
-
-        function updateTableBody(data) {
-            var html = '';
-            data.forEach(function(catalog) {
-                html += '<tr>';
-                html += '<td>' + catalog.code + '</td>';
-                html += '<td>' + catalog.display + '</td>';
-                html += '<td>' + catalog.shortname + '</td>';
-                html += '</tr>';
-            });
-
-            var tbody = document.getElementById('catalogTableBody');
-            tbody.innerHTML = html;
-        }
-    </script>
-</table>
+    <table id="catalogTable">
+        <thead>
+        <tr>
+            <th style="min-width: 150px; text-align: left;">Code</th>
+            <th style="min-width: 150px; text-align: left;">Display</th>
+            <th style="min-width: 150px; text-align: left;">Short</th>
+        </tr>
+        </thead>
+        <tbody id="catalogTableBody">
+        </tbody>
+        <script src="catalog.js">
+        </script>
+    </table>
 </body>
 </html>

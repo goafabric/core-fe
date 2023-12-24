@@ -2,3 +2,4 @@
 - node index.js
 
 - npm publish --access public
+- npm install @goafabric/catalog-fe 

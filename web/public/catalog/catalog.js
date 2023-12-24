@@ -16,7 +16,15 @@ function updateTableBody(data) {
     tbody.innerHTML = html;
 }
 
-document.addEventListener('DOMContentLoaded', function () {
+function performSearch() {
+    var searchInput = document.getElementById('search').value;
     var url = new URL(window.location.href).searchParams.get('url');
-    loadCatalog('http://localhost:50600' + url);
+    loadCatalog('http://localhost:50600' + url + "?display=" + searchInput);
+}
+
+/* main */
+
+document.addEventListener('DOMContentLoaded', function () {
+    performSearch()
 });
+

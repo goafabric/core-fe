@@ -10,16 +10,21 @@
 </head>
 
 <body>
-<table id="catalogTable">
-    <thead>
-    <tr>
-        <th>Code</th>
-        <th>Display</th>
-        <th>Short</th>
-    </tr>
-    </thead>
-    <tbody id="catalogTableBody">
-    </tbody>
+    <div id="search-container">
+        <label for="search">Search:</label>
+        <input type="text" id="search" oninput="performSearch()">
+    </div>
+
+    <table id="catalogTable">
+        <thead>
+        <tr>
+            <th>Code</th>
+            <th>Display</th>
+            <th>Short</th>
+        </tr>
+        </thead>
+        <tbody id="catalogTableBody">
+        </tbody>
 </table>
 </body>
 </html>

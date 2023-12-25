@@ -1,12 +1,18 @@
 #search-container * {
-    font-size: 15px;
+    font-size: 14px;
 }
 
-#catalogTable * {
-    font-size: 15px;
+#catalogTable {
+    font-size: 14px;
+
+    border-collapse: collapse;
+    width: 100%;
+    border: 1px solid #ddd; /* Thin grey border around the table */
 }
 
-#catalogTable th {
-    min-width: 150px;
+#catalogTable th,
+#catalogTable td {
+    border: 1px solid #ddd; /* Thin grey border for each cell */
+    padding: 8px; /* Adjust padding as needed */
     text-align: left;
 }

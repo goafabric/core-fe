@@ -17,17 +17,17 @@ function updateTableBody(data) {
     tableColumns.forEach(function(column) {
         header += '<th>' + column.toUpperCase() + '</th>';
     });
-    document.getElementById('catalogHeader').innerHTML = header;
+    document.getElementById('tableHeader').innerHTML = header;
 
     var html = '';
-    data.forEach(function(catalog) {
+    data.forEach(function(table) {
         html += '<tr>';
         tableColumns.forEach(function(column) {
-            html += '<td>' + catalog[column] + '</td>';
+            html += '<td>' + table[column] + '</td>';
         });
         html += '</tr>';
     });
-    document.getElementById('catalogTableBody').innerHTML = html;
+    document.getElementById('tableBody').innerHTML = html;
 }
 
 document.addEventListener('DOMContentLoaded', function () {

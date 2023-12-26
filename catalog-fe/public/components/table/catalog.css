@@ -2,7 +2,7 @@
     font-size: 14px;
 }
 
-#catalogTable {
+#table {
     font-size: 14px;
 
     border-collapse: collapse;
@@ -10,8 +10,8 @@
     border: 1px solid #ddd; /* Thin grey border around the table */
 }
 
-#catalogTable th,
-#catalogTable td {
+#table th,
+#table td {
     border: 1px solid #ddd; /* Thin grey border for each cell */
     padding: 8px; /* Adjust padding as needed */
     text-align: left;

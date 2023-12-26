@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="../components/table/table.js"></script>
+    <script src="./properties.js"></script>
+    <link rel="stylesheet" href="../components/table/table.css">
+    <link rel="stylesheet" href="../components/table/tab.css">
+
+    <title>Patient</title>
+</head>
+
+<body>
+    <div class="tab">
+        <button id="tab1" class="tablinks" onclick="setSearchUrl('patients/findByGivenName?givenName=',['givenName', 'familyName'])">Patient</button>
+    </div>
+
+    <p></p>
+
+    <div id="search-container">
+        <label for="search">Search </label>
+        <input type="text" id="search" oninput="performSearch()">
+    </div>
+
+    <p></p>
+    
+    <table id="table">
+        <thead>
+        <tr id="tableHeader"></tr>
+        </thead>
+        <tbody id="tableBody">
+        </tbody>
+    </table>
+</body>
+</html>

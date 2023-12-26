@@ -1,0 +1,1 @@
+const catalogUrl = 'http://localhost:50600'

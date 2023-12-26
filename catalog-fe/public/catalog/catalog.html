@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Catalogs</title>
-
+    
     <script src="catalog.js"></script>
     <link rel="stylesheet" href="catalog.css">
     <link rel="stylesheet" href="tab.css">
@@ -12,9 +12,9 @@
 
 <body>
     <div class="tab">
-        <button class="tablinks" onclick="setCatalogType('chargeitems')">Chargeitems</button>
-        <button class="tablinks" onclick="setCatalogType('diagnosis')">Diagnosis</button>
-        <button class="tablinks" onclick="setCatalogType('insurances')">Insurances</button>
+        <button id="tab1" class="tablinks" onclick="setSearchUrl('chargeitems/findByDisplay?display=',['Code', 'Display', 'Short'])">Chargeitems</button>
+        <button id="tab2" class="tablinks" onclick="setSearchUrl('diagnosis/findByDisplay?display=',['Code', 'Display', 'Short'])">Diagnosis</button>
+        <button id="tab3" class="tablinks" onclick="setSearchUrl('insurances/findByDisplay?display=',['Code', 'Display', 'Short'])">Insurances</button>
     </div>
 
     <p></p>
@@ -28,8 +28,7 @@
     
     <table id="catalogTable">
         <thead>
-        <tr id="catalogHeader">
-        </tr>
+        <tr id="catalogHeader"></tr>
         </thead>
         <tbody id="catalogTableBody">
         </tbody>

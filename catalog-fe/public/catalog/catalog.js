@@ -1,20 +1,23 @@
-let catalogType = ""
+let searchUrl = ""
+let tableColumns = [];
 
-function performSearch() {
-    var searchInput = document.getElementById('search').value;
-    loadCatalog('http://localhost:50600/' + catalogType + "/findByDisplay?display=" + searchInput);
+function setSearchUrl(url, columns) {
+    searchUrl = url
+    tableColumns = columns
+    performSearch()
 }
 
-function loadCatalog(url) {
+function performSearch() {
+    const url = 'http://localhost:50600/' + searchUrl + document.getElementById('search').value;
     fetch(url).then(response => response.json()).then(data => updateTableBody(data));
 }
 
 function updateTableBody(data) {
     var header = '';
-    header += '<th>Code</th>'
-    header += '<th>Display</th>'
-    header += '<th>Short</th>'
-    document.getElementById('catalogHeader').innerHTML = header
+    tableColumns.forEach(function(column) {
+        header += '<th>' + column + '</th>';
+    });
+    document.getElementById('catalogHeader').innerHTML = header;
 
     var html = '';
     data.forEach(function(catalog) {
@@ -27,12 +30,6 @@ function updateTableBody(data) {
     document.getElementById('catalogTableBody').innerHTML = html;
 }
 
-function setCatalogType(catalog) {
-    catalogType = catalog
-    performSearch()
-}
-
 document.addEventListener('DOMContentLoaded', function () {
-    setCatalogType('chargeitems')
+    document.getElementById('tab1').click();
 });
-

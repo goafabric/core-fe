@@ -15,16 +15,16 @@ function performSearch() {
 function updateTableBody(data) {
     var header = '';
     tableColumns.forEach(function(column) {
-        header += '<th>' + column + '</th>';
+        header += '<th>' + column.toUpperCase() + '</th>';
     });
     document.getElementById('catalogHeader').innerHTML = header;
 
     var html = '';
     data.forEach(function(catalog) {
         html += '<tr>';
-        html += '<td>' + catalog.code + '</td>';
-        html += '<td>' + catalog.display + '</td>';
-        html += '<td>' + catalog.shortname + '</td>';
+        tableColumns.forEach(function(column) {
+            html += '<td>' + catalog[column] + '</td>';
+        });
         html += '</tr>';
     });
     document.getElementById('catalogTableBody').innerHTML = html;

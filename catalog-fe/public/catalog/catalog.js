@@ -10,6 +10,12 @@ function loadCatalog(url) {
 }
 
 function updateTableBody(data) {
+    var header = '';
+    header += '<th>Code</th>'
+    header += '<th>Display</th>'
+    header += '<th>Short</th>'
+    document.getElementById('catalogHeader').innerHTML = header
+
     var html = '';
     data.forEach(function(catalog) {
         html += '<tr>';
@@ -18,9 +24,7 @@ function updateTableBody(data) {
         html += '<td>' + catalog.shortname + '</td>';
         html += '</tr>';
     });
-
-    var tbody = document.getElementById('catalogTableBody');
-    tbody.innerHTML = html;
+    document.getElementById('catalogTableBody').innerHTML = html;
 }
 
 function setCatalogType(catalog) {

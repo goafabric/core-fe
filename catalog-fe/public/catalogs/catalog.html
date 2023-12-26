@@ -8,12 +8,14 @@
     <link rel="stylesheet" href="../components/table/table.css">
     <link rel="stylesheet" href="../components/table/tab.css">
 
-    <title>Patient</title>
+    <title>Catalogs</title>
 </head>
 
 <body>
     <div class="tab">
-        <button id="tab1" class="tablinks" onclick="setSearchUrl('/patients/findByGivenName?givenName=',['givenName', 'familyName'])">Patient</button>
+        <button id="tab1" class="tablinks" onclick="setSearchUrl('/chargeitems/findByDisplay?display=',['code', 'display', 'price'])">Chargeitems</button>
+        <button id="tab2" class="tablinks" onclick="setSearchUrl('/diagnosis/findByDisplay?display=',['code', 'display', 'shortname'])">Diagnosis</button>
+        <button id="tab3" class="tablinks" onclick="setSearchUrl('/insurances/findByDisplay?display=',['code', 'display', 'shortname'])">Insurances</button>
     </div>
 
     <p></p>

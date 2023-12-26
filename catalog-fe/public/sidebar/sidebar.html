@@ -11,15 +11,24 @@
 
 <body>
     <div id="my-sidebar">
-        <a href="../patient/patient.html" target="catalogFrame">
+        <a id="patient" href="../patient/patient.html" target="catalogFrame">
             <i class="material-icons" style="font-size:20px">library_books</i> Patient
         </a>
-        <a href="../catalog/catalog.html" target="catalogFrame">
+        <a id="organization" href="../organization/organization.html" target="catalogFrame">
+            <i class="material-icons" style="font-size:20px">library_books</i> Organization
+        </a>
+        <a id="catalog" href="../catalogs/catalog.html" target="catalogFrame">
             <i class="material-icons" style="font-size:20px">library_books</i> Catalogs
         </a>
     </div>
     <div id="my-content">
         <iframe name="catalogFrame"></iframe>
     </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            document.getElementById('patient').click();
+        });
+    </script>
 </body>
 </html>

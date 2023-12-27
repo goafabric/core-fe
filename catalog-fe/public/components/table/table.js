@@ -28,7 +28,7 @@ function updateTableBody(data) {
 function updateHeader() {
     var header = '';
     tableColumns.forEach(function (column) {
-        header += '<th>' + column.toUpperCase() + '</th>';
+        header += '<th>' + column.split('.').pop().toUpperCase() + '</th>'; //pop retrieves the last array element
     });
     document.getElementById('tableHeader').innerHTML = header;
 }
@@ -40,19 +40,8 @@ function buildTableCells(obj, columns) {
         var value = obj;
 
         properties.forEach(function (prop) {
-            if (value) {
-                // Check if the property includes array indexing
-                var arrayMatch = prop.match(/(\w+)\[(\d+)\]/);
-                if (arrayMatch) {
-                    var arrayProp = arrayMatch[1];
-                    var arrayIndex = parseInt(arrayMatch[2], 10);
-                    value = value[arrayProp][arrayIndex];
-                } else {
-                    value = value[prop];
-                }
-            } else {
-                value = null;
-            }
+            var arrayMatch = prop.match(/(\w+)\[(\d+)\]/);
+            value = arrayMatch ? value[arrayMatch[1]][parseInt(arrayMatch[2], 10)] : value[prop];
         });
 
         html += '<td>' + (value !== null ? value : '') + '</td>';

@@ -48,6 +48,4 @@ function buildTableCells(obj, columns) {
     return html;
 }
 
-document.addEventListener('DOMContentLoaded', function () {
-    document.getElementById('tab1').click();
-});
+document.addEventListener('DOMContentLoaded', () => document.getElementById('tab1').click());

@@ -26,20 +26,18 @@ function updateTableBody(data) {
 }
 
 function updateHeader() {
-    var header = '';
-    tableColumns.forEach(function (column) {
-        header += '<th>' + column.split('.').pop().toUpperCase() + '</th>'; //pop retrieves the last array element
-    });
+    var header = tableColumns.map(column =>
+        '<th>' + column.split('.').pop().toUpperCase() + '</th>').join('');
     document.getElementById('tableHeader').innerHTML = header;
 }
 
 function buildTableCells(obj, columns) {
     var html = '';
-    columns.forEach(function (column) {
+    columns.forEach(column => {
         var properties = column.split('.');
         var value = obj;
 
-        properties.forEach(function (prop) {
+        properties.forEach(prop => {
             var arrayMatch = prop.match(/(\w+)\[(\d+)\]/);
             value = arrayMatch ? value[arrayMatch[1]][parseInt(arrayMatch[2], 10)] : value[prop];
         });

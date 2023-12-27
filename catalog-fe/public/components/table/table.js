@@ -2,9 +2,9 @@ let searchUrl = ""
 let tableColumns = [];
 
 function setSearchUrl(url, columns) {
-    searchUrl = url
-    tableColumns = columns
-    performSearch()
+    searchUrl = url;
+    tableColumns = columns;
+    performSearch();
 }
 
 function performSearch() {
@@ -13,21 +13,51 @@ function performSearch() {
 }
 
 function updateTableBody(data) {
+    updateHeader();
+    
+    var html = '';
+    data.forEach(function (table) {
+        html += '<tr>';
+        html += buildTableCells(table, tableColumns);
+        html += '</tr>';
+    });
+
+    document.getElementById('tableBody').innerHTML = html;
+}
+
+function updateHeader() {
     var header = '';
-    tableColumns.forEach(function(column) {
+    tableColumns.forEach(function (column) {
         header += '<th>' + column.toUpperCase() + '</th>';
     });
     document.getElementById('tableHeader').innerHTML = header;
+}
 
+function buildTableCells(obj, columns) {
     var html = '';
-    data.forEach(function(table) {
-        html += '<tr>';
-        tableColumns.forEach(function(column) {
-            html += '<td>' + table[column] + '</td>';
+    columns.forEach(function (column) {
+        var properties = column.split('.');
+        var value = obj;
+
+        properties.forEach(function (prop) {
+            if (value) {
+                // Check if the property includes array indexing
+                var arrayMatch = prop.match(/(\w+)\[(\d+)\]/);
+                if (arrayMatch) {
+                    var arrayProp = arrayMatch[1];
+                    var arrayIndex = parseInt(arrayMatch[2], 10);
+                    value = value[arrayProp][arrayIndex];
+                } else {
+                    value = value[prop];
+                }
+            } else {
+                value = null;
+            }
         });
-        html += '</tr>';
+
+        html += '<td>' + (value !== null ? value : '') + '</td>';
     });
-    document.getElementById('tableBody').innerHTML = html;
+    return html;
 }
 
 document.addEventListener('DOMContentLoaded', function () {

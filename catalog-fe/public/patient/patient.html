@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="../components/table/table.js"></script>
-    <script src="./properties.js"></script>
+    <script src="../properties.js"></script>
     <link rel="stylesheet" href="../components/table/table.css">
     <link rel="stylesheet" href="../components/table/tab.css">
 
@@ -13,7 +13,7 @@
 
 <body>
     <div class="tab">
-        <button id="tab1" class="tablinks" onclick="setSearchUrl('/patients/findByGivenName?givenName=',['givenName', 'familyName', 'address[0].street', 'address[0].city'])">Patient</button>
+        <button id="tab1" class="tablinks" onclick="search('/patients/findByGivenName?givenName=',['givenName', 'familyName', 'address[0].street', 'address[0].city'])">Patient</button>
     </div>
 
     <p></p>
@@ -34,3 +34,5 @@
     </table>
 </body>
 </html>
+
+<script>function search(url, columns) { setSearchUrl(coreServiceUrl + url, columns) } </script>

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="../components/table/table.js"></script>
-    <script src="./properties.js"></script>
+    <script src="../properties.js"></script>
     <link rel="stylesheet" href="../components/table/table.css">
     <link rel="stylesheet" href="../components/table/tab.css">
 
@@ -13,9 +13,9 @@
 
 <body>
     <div class="tab">
-        <button id="tab1" class="tablinks" onclick="setSearchUrl('/chargeitems/findByDisplay?display=',['code', 'display', 'price'])">Chargeitems</button>
-        <button id="tab2" class="tablinks" onclick="setSearchUrl('/diagnosis/findByDisplay?display=',['code', 'display', 'shortname'])">Diagnosis</button>
-        <button id="tab3" class="tablinks" onclick="setSearchUrl('/insurances/findByDisplay?display=',['code', 'display', 'shortname'])">Insurances</button>
+        <button id="tab1" class="tablinks" onclick="search('/chargeitems/findByDisplay?display=',['code', 'display', 'price'])">Chargeitems</button>
+        <button id="tab2" class="tablinks" onclick="search('/diagnosis/findByDisplay?display=',['code', 'display', 'shortname'])">Diagnosis</button>
+        <button id="tab3" class="tablinks" onclick="search('/insurances/findByDisplay?display=',['code', 'display', 'shortname'])">Insurances</button>
     </div>
 
     <p></p>
@@ -36,3 +36,5 @@
     </table>
 </body>
 </html>
+
+<script>function search(url, columns) { setSearchUrl(catalogServiceUrl + url, columns) } </script>

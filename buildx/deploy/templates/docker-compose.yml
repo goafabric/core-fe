@@ -56,7 +56,7 @@ services:
       monitoring.view.s3.url: "http://localhost:9101/browser/objects"
 
       #sec
-      security.authentication.enabled: "true"
+      security.authentication.enabled: "false"
 
       #s3
       spring.cloud.aws.s3.endpoint: "http://s3minio:9000"
@@ -154,7 +154,7 @@ services:
 
   core-fe:
     container_name: ${_Values_root_name}-core-fe
-    image: goafabric/core-fe:1.0.0-SNAPSHOT
+    image: goafabric/core-fe:1.2.0-SNAPSHOT
     restart: 'no'
     ports:
       - 80

@@ -1,17 +1,17 @@
 {
-  "name": "@goafabric/catalog-fe",
-  "version": "1.0.0",
-  "description": "- npm init -y && npm install express - node index.js",
+  "name": "@goafabric/core-fe",
+  "version": "1.0.1",
+  "description": "- npm init --scope=@goafabric -y && npm install express - node index.js",
   "main": "index.js",
+  "directories": {
+    "doc": "doc"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "directories": {
-    "doc": "doc"
-  },
   "dependencies": {
     "express": "^4.18.2"
   }

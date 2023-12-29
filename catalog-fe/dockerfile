@@ -1,0 +1,14 @@
+# Use the official Nginx base image
+FROM nginx:latest
+
+# Create a directory for your static files
+RUN mkdir /usr/share/nginx/html/frontend
+
+# Copy the contents of the /public folder to the Nginx HTML directory
+COPY ./public /usr/share/nginx/html/frontend
+
+# Expose port 80 for Nginx
+EXPOSE 80
+
+# Start Nginx in the foreground
+#CMD ["nginx", "-g", "daemon off;"]

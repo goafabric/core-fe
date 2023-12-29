@@ -8,6 +8,7 @@ RUN mkdir /usr/share/nginx/html/frontend
 COPY ./node_modules/@goafabric/core-fe/src/public /usr/share/nginx/html/frontend
 
 RUN sed -i 's/const devMode = true;/const devMode = false;/g' /usr/share/nginx/html/frontend/properties.js
+RUN sed -i 's/const mockMode = false;/const mockMode = false;/g' /usr/share/nginx/html/frontend/properties.js
 
 # Expose port 80 for Nginx
 EXPOSE 80

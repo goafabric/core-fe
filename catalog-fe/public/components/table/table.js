@@ -10,7 +10,7 @@ function setSearchUrl(url, columns) {
 function performSearch() {
     const url = searchUrl + document.getElementById('search').value;
     fetch(url).then(response => response.json()).then(data => updateTableBody(data));
-    //updateTableBody(mockData);
+    if (mockMode == true) { updateTableBody(mockData); }
 }
 
 function updateTableBody(data) {

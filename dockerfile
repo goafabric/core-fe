@@ -5,10 +5,11 @@ FROM nginx:1.25.3
 RUN mkdir /usr/share/nginx/html/frontend
 
 # Copy the contents of the /public folder to the Nginx HTML directory
-COPY ./docker/node_modules/@goafabric/core-fe/src/public /usr/share/nginx/html/frontend
+#COPY ./docker/node_modules/@goafabric/core-fe/src/public /usr/share/nginx/html/frontend
+COPY ./src/public /usr/share/nginx/html/frontend
 
 RUN sed -i 's/const devMode = true;/const devMode = false;/g' /usr/share/nginx/html/frontend/properties.js
-RUN sed -i 's/const mockMode = false;/const mockMode = false;/g' /usr/share/nginx/html/frontend/properties.js
+RUN sed -i 's/const mockMode = true;/const mockMode = false;/g' /usr/share/nginx/html/frontend/properties.js
 
 # Expose port 80 for Nginx
 EXPOSE 80

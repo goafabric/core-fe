@@ -1,5 +1,5 @@
 const devMode = true;
-const mockMode = false;
+const mockMode = true;
 
 //urls
 const coreServiceUrl = devMode == true ? 'http://localhost:50800' : '/core';

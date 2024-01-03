@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./modal.css">
+</head>
+<body>
+
+<!-- Button to open the modal -->
+<button onclick="openModal()">Open Modal</button>
+
+<!-- The Modal -->
+<div id="myModal">
+    <form id="modalForm">
+        <label for="type">TYPE:</label>
+        <input type="text" id="type" name="type" required>
+
+        <label for="display">DISPLAY:</label>
+        <input type="text" id="display" name="display" required>
+
+        <button type="button" onclick="closeModal()">Close</button>
+    </form>
+</div>
+
+<!-- The Overlay -->
+<div id="overlay"></div>
+
+<script>
+    // Function to open the modal
+    function openModal() {
+        document.getElementById('myModal').style.display = 'block';
+        document.getElementById('overlay').style.display = 'block';
+    }
+
+    // Function to close the modal
+    function closeModal() {
+        document.getElementById('myModal').style.display = 'none';
+        document.getElementById('overlay').style.display = 'none';
+    }
+</script>
+
+</body>
+</html>

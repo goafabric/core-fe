@@ -16,3 +16,7 @@
     padding: 8px; /* Adjust padding as needed */
     text-align: left;
 }
+
+#table tr:hover {
+    background-color: lightblue; /* Add light blue background on hover */
+}

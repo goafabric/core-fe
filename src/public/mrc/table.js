@@ -55,9 +55,13 @@ function enableEdit(cell) {
     cell.innerHTML = '';
     cell.appendChild(inputElement);
     inputElement.focus();
-    inputElement.addEventListener('blur', () => disableEdit(cell, inputElement.value));
+    inputElement.addEventListener('blur', () => saveEdit(cell, inputElement.value));
     inputElement.addEventListener('keyup', event => event.key === 'Enter' && saveEdit(cell, inputElement.value));
 }
-function saveEdit(cell, newValue) { cell.innerHTML = newValue; }
+function saveEdit(cell, newValue) {
+    cell.innerHTML = newValue;
+    var cellValues = Array.from(cell.parentNode.cells).map(cell => cell.innerText.trim());
+    console.log('Cell values of the current row:', cellValues);
+}
 
 document.addEventListener('DOMContentLoaded', () => document.getElementById('tab1').click());

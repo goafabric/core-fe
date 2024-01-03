@@ -54,7 +54,7 @@ function enableEdit(cell) {
     cell.innerHTML = '';
     cell.appendChild(inputElement);
     inputElement.focus();
-    inputElement.addEventListener('blur', () => disableEdit(cell, inputElement.value));
+    inputElement.addEventListener('blur', () => saveEdit(cell, inputElement.value));
     inputElement.addEventListener('keyup', event => event.key === 'Enter' && saveEdit(cell, inputElement.value));
 }
 function saveEdit(cell, newValue) { cell.innerHTML = newValue; }

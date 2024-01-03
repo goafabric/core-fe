@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./table.js"></script>
+    <script src="../properties.js"></script>
+    <link rel="stylesheet" href="../components/table/table.css">
+    <link rel="stylesheet" href="../components/table/tab.css">
+
+    <title>Medical Records</title>
+</head>
+
+<body>
+    <div class="tab">
+        <button id="tab1" class="tablinks" onclick="search(['type', 'display', 'code'])">MRC</button>
+    </div>
+
+    <p></p>
+
+    <div id="search-container">
+        <label for="search"></label>
+        <input type="search" id="search" name="myInput" placeholder="Search..." size="30" oninput="performSearch()" required>
+    </div>
+
+    <p></p>
+    
+    <table id="table">
+        <thead>
+        <tr id="tableHeader"></tr>
+        </thead>
+        <tbody id="tableBody">
+        </tbody>
+    </table>
+</body>
+</html>
+
+<script>
+function search(columns) {
+    fetch(coreServiceUrl + '/patients/findByFamilyName?familyName=Burns').then(response => response.json())
+    .then(data => {
+        var url = '/encounters/findByPatientIdAndDisplay?patientId=' + data[0].id + '&display=';
+        setSearchUrl(coreServiceUrl + url, columns);
+    })
+}
+</script>

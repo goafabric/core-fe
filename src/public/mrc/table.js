@@ -44,9 +44,20 @@ function buildTableCells(obj, columns) {
             value = arrayMatch ? value[arrayMatch[1]][parseInt(arrayMatch[2], 10)] : value[prop];
         });
 
-        html += '<td>' + (value !== null ? value : '') + '</td>';
+        html += '<td ondblclick="enableEdit(this)">' + (value !== null ? value : '') + '</td>';
     });
     return html;
 }
+
+function enableEdit(cell) {
+    var inputElement = document.createElement('input');
+    inputElement.value = cell.innerText.trim();
+    cell.innerHTML = '';
+    cell.appendChild(inputElement);
+    inputElement.focus();
+    inputElement.addEventListener('blur', () => disableEdit(cell, inputElement.value));
+    inputElement.addEventListener('keyup', event => event.key === 'Enter' && saveEdit(cell, inputElement.value));
+}
+function saveEdit(cell, newValue) { cell.innerHTML = newValue; }
 
 document.addEventListener('DOMContentLoaded', () => document.getElementById('tab1').click());

@@ -1,7 +1,7 @@
 let searchUrl = "";
 let tableColumns = [];
 
-function setSearchUrl(url, columns) {
+export function setSearchUrl(url, columns) {
     searchUrl = url;
     tableColumns = columns;
     performSearch();

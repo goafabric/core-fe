@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="./table.js"></script>
+    <script src="../components/table/table.js"></script>
     <script src="../properties.js"></script>
     <link rel="stylesheet" href="../components/table/table.css">
     <link rel="stylesheet" href="../components/table/tab.css">
@@ -38,6 +38,11 @@
 
 <script>
 function search(columns) {
+    if (mockMode == true) {
+        setSearchUrl(coreServiceUrl + '/encounters/findByPatientIdAndDisplay?patientId=', columns);
+        return;
+    }
+
     fetch(coreServiceUrl + '/patients/findByFamilyName?familyName=Burns').then(response => response.json())
     .then(data => {
         var url = '/encounters/findByPatientIdAndDisplay?patientId=' + data[0].id + '&display=';

@@ -8,13 +8,18 @@ function setSearchUrl(url, columns) {
 }
 
 function performSearch() {
-    const url = searchUrl + document.getElementById('search').value;
-    fetch(url).then(response => response.json()).then(data => updateTableBody(data));
-    if (mockMode == true) { updateTableBody(mockData); }
+    if (mockMode == true) {
+        updateTableBody(mockData);
+    } else {
+        const url = searchUrl + document.getElementById('search').value;
+        fetch(url).then(response => response.json()).then(data => updateTableBody(data));
+    }
 }
 
 function updateTableBody(data) {
     updateHeader();
+
+    if (searchUrl.includes("/encounters")) { data = data[0]['medicalRecords']; }
     
     var html = '';
     data.forEach(arElement => {
@@ -57,6 +62,11 @@ function enableEdit(cell) {
     inputElement.addEventListener('blur', () => saveEdit(cell, inputElement.value));
     inputElement.addEventListener('keyup', event => event.key === 'Enter' && saveEdit(cell, inputElement.value));
 }
-function saveEdit(cell, newValue) { cell.innerHTML = newValue; }
+
+function saveEdit(cell, newValue) {
+    cell.innerHTML = newValue;
+    var cellValues = Array.from(cell.parentNode.cells).map(cell => cell.innerText.trim());
+    console.log('Cell values of the current row:', cellValues);
+}
 
 document.addEventListener('DOMContentLoaded', () => document.getElementById('tab1').click());

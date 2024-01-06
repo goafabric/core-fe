@@ -39,7 +39,7 @@ function updateHeader() {
 
 function buildTableCells(obj, columns) {
     var html = '';
-    columns.forEachx(column => {
+    columns.forEach(column => {
         var properties = column.split('.');
         var value = obj;
 

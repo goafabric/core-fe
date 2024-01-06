@@ -1,4 +1,4 @@
-let searchUrl = ""
+let searchUrl = "";
 let tableColumns = [];
 
 function setSearchUrl(url, columns) {
@@ -19,7 +19,7 @@ function performSearch() {
 function updateTableBody(data) {
     updateHeader();
 
-    if (searchUrl.includes("/encounters")) { data = data[0]['medicalRecords']; }
+    if (searchUrl.includes("/encounters")) { data = data[0].medicalRecords; }
     
     var html = '';
     data.forEach(arElement => {

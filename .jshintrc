@@ -1,3 +1,10 @@
 {
-    "esversion": 6
+    "esversion": 6,
+    "undef": true,
+    "browser": true,
+    "globals": {
+        "mockMode": true,
+        "mockData": true,
+        "console": true
+    }
 }

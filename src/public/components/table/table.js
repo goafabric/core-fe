@@ -17,7 +17,7 @@ export function performSearch() {
     updateHeader();
     const none = properties.mockMode == true
                  ? updateTableBody(properties.mockData)
-                 : fetch(searchUrl + document.getElementById('search').value).then(response => response.json()).then(data => updateTableBody(data));
+                 : fetch(searchUrl + document.getElementById('search').value).then(response => response.json()).then(data => updateBody(data));
 }
 
 function updateHeader() {
@@ -25,8 +25,7 @@ function updateHeader() {
         tableColumns.map(column => '<th>' + column.toUpperCase() + '</th>').join('');
 }
 
-function updateTableBody(data) {
-    if (searchUrl.includes("/encounters")) { data = data[0].medicalRecords; }
+function updateBody(data) {
     document.getElementById('tableBody').innerHTML =
         data.map(arElement => '<tr>' + bodyCallbackFunction(arElement) + '</tr>').join('');
 }

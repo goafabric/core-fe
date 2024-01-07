@@ -18,6 +18,7 @@ function mySearch(columns) {
     });
 }
 
-function insertMedicalRecord(medicalRecord) {
-    return `<td>${medicalRecord.type}</td> <td>${medicalRecord.display}</td> <td>${medicalRecord.code}</td>`;
+function insertMedicalRecord(encounter) {
+    const medicalRecords = encounter.medicalRecords;
+    return medicalRecords.map(medicalRecord => `<tr> <td>${medicalRecord.type}</td> <td>${medicalRecord.display}</td> <td>${medicalRecord.code}</td> </tr>`).join('');
 }

@@ -16,7 +16,7 @@ export function setSearchUrl(url, columns, callback) {
 export function performSearch() {
     updateHeader();
     const none = properties.mockMode == true
-                 ? updateTableBody(properties.mockData)
+                 ? updateBody(properties.mockData)
                  : fetch(searchUrl + document.getElementById('search').value).then(response => response.json()).then(data => updateBody(data));
 }
 

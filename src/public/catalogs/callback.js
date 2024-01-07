@@ -7,7 +7,7 @@ addSearchListener();
 document.addEventListener('DOMContentLoaded', () => document.getElementById('tab1').click());
 
 function addSearchListener() {
-    document.getElement('search').addEventListener('input', () => performSearch());
+    document.getElementById('search').addEventListener('input', () => performSearch());
 }
 
 function addTabListener() {

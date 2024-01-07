@@ -2,16 +2,17 @@ import * as properties from "../../properties.js";
 
 let searchUrl = "";
 let tableColumns = [];
-let callbackFunction = null;
+let bodyCallbackFunction = null;
 
 export function setSearchUrl(url, columns, callback) {
     searchUrl = url;
     tableColumns = columns;
-    callbackFunction = callback;
+    bodyCallbackFunction = callback;
     performSearch();
 }
 
 export function performSearch() {
+    updateHeader();
     if (properties.mockMode == true) {
         updateTableBody(properties.mockData);
     } else {
@@ -21,14 +22,12 @@ export function performSearch() {
 }
 
 function updateTableBody(data) {
-    updateHeader();
-
     if (searchUrl.includes("/encounters")) { data = data[0].medicalRecords; }
-    
+
     var html = '';
     data.forEach(arElement => {
         html += '<tr>';
-        html += buildTableCells(arElement, tableColumns);
+        html += bodyCallbackFunction(arElement);
         html += '</tr>';
     });
 
@@ -39,25 +38,6 @@ function updateHeader() {
     var header = tableColumns.map(column =>
         '<th>' + column.split('.').pop().toUpperCase() + '</th>').join('');
     document.getElementById('tableHeader').innerHTML = header;
-}
-
-function buildTableCells(obj, columns) {
-    if (callbackFunction != null) {
-        return callbackFunction(obj);
-    }
-    var html = '';
-    columns.forEach(column => {
-        var properties = column.split('.');
-        var value = obj;
-
-        properties.forEach(prop => {
-            var arrayMatch = prop.match(/(\w+)\[(\d+)\]/);
-            value = arrayMatch ? value[arrayMatch[1]][parseInt(arrayMatch[2], 10)] : value[prop];
-        });
-
-        html += '<td ondblclick="enableEdit(this)">' + (value !== null ? value : '') + '</td>';
-    });
-    return html;
 }
 
 function enableEdit(cell) {

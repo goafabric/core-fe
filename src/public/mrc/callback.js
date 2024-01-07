@@ -3,6 +3,7 @@ import { setSearchUrl, performSearch } from "../components/table/table.js";
 
 addTabListener();
 addSearchListener();
+document.addEventListener('DOMContentLoaded', () => document.getElementById('tab1').click());
 
 function addSearchListener() {
     document.getElement('search').addEventListener('input', () => performSearch());

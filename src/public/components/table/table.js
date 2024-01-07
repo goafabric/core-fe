@@ -29,5 +29,3 @@ function updateBody(data) {
     document.getElementById('tableBody').innerHTML =
         data.map(arElement => '<tr>' + bodyCallbackFunction(arElement) + '</tr>').join('');
 }
-
-document.addEventListener('DOMContentLoaded', () => document.getElementById('tab1').click());

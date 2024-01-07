@@ -2,10 +2,12 @@ import * as properties from "../../properties.js";
 
 let searchUrl = "";
 let tableColumns = [];
+let callbackFunction = null;
 
-export function setSearchUrl(url, columns) {
+export function setSearchUrl(url, columns, callback) {
     searchUrl = url;
     tableColumns = columns;
+    callbackFunction = callback;
     performSearch();
 }
 
@@ -40,6 +42,9 @@ function updateHeader() {
 }
 
 function buildTableCells(obj, columns) {
+    if (callbackFunction != null) {
+        return callbackFunction(obj);
+    }
     var html = '';
     columns.forEach(column => {
         var properties = column.split('.');

@@ -2,7 +2,7 @@ import { setSearchUrl } from "../components/table/table.js";
 import * as properties from "../properties.js";
 
 document.getElementById('tab1').addEventListener('click', () =>
-    search(['givenName', 'familyName', 'address[0].street', 'address[0].city']));
+    search(['type', 'display', 'code']));
 
 function search(columns) {
     if (properties.mockMode == true) {

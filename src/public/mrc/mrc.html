@@ -34,18 +34,3 @@
 
 </body>
 </html>
-
-<script>
-function search(columns) {
-    if (mockMode == true) {
-        setSearchUrl(coreServiceUrl + '/encounters/findByPatientIdAndDisplay?patientId=', columns);
-        return;
-    }
-
-    fetch(coreServiceUrl + '/patients/findByFamilyName?familyName=Burns').then(response => response.json())
-    .then(data => {
-        var url = '/encounters/findByPatientIdAndDisplay?patientId=' + data[0].id + '&display=';
-        setSearchUrl(coreServiceUrl + url, columns);
-    })
-}
-</script>

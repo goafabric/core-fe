@@ -1,11 +1,9 @@
-<!--
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="../components/table/table.js"></script>
-    <script src="../properties.js"></script>
+    <script type="module" src="callback.js"></script>
     <link rel="stylesheet" href="../components/table/table.css">
     <link rel="stylesheet" href="../components/table/tab.css">
 
@@ -14,10 +12,10 @@
 
 <body>
     <div class="tab">
-        <button id="tab1" class="tablinks" onclick="search('/practitioners/findByGivenName?givenName=',['givenName', 'familyName', 'address[0].street', 'address[0].city'])">Practitioner</button>
-        <button id="tab2" class="tablinks" onclick="search('/organizations/findByName?name=',['name', 'address[0].street', 'address[0].city'])">Organization</button>
-        <button id="tab3" class="tablinks" onclick="search('/roles/findByName?name=',['name', 'roles[0].name'])">Users</button>
-        <button id="tab4" class="tablinks" onclick="search('/roles/findByName?name=',['name'])">Roles</button>
+        <button id="tab1" class="tablinks">Practitioner</button>
+        <button id="tab2" class="tablinks">Organization</button>
+        <button id="tab3" class="tablinks">Users</button>
+        <button id="tab4" class="tablinks">Roles</button>
     </div>
 
     <p></p>
@@ -40,4 +38,3 @@
 </html>
 
 <script>function search(url, columns) { setSearchUrl(coreServiceUrl + url, columns) } </script>
--->

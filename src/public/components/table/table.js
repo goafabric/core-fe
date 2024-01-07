@@ -9,6 +9,13 @@ export function setSearchUrl(url, columns, callback) {
     tableColumns = columns;
     bodyCallbackFunction = callback;
     performSearch();
+
+    document.getElementById('table').addEventListener('dblclick', function(event) {
+        const target = event.target;
+        if (target.tagName === 'TD') {
+            enableEdit(target);
+        }
+    });
 }
 
 export function performSearch() {
@@ -23,20 +30,12 @@ export function performSearch() {
 
 function updateTableBody(data) {
     if (searchUrl.includes("/encounters")) { data = data[0].medicalRecords; }
-
-    var html = '';
-    data.forEach(arElement => {
-        html += '<tr>';
-        html += bodyCallbackFunction(arElement);
-        html += '</tr>';
-    });
-
-    document.getElementById('tableBody').innerHTML = html;
+    document.getElementById('tableBody').innerHTML =
+        data.map(arElement => '<tr>' + bodyCallbackFunction(arElement) + '</tr>').join('');
 }
 
 function updateHeader() {
-    var header = tableColumns.map(column =>
-        '<th>' + column.split('.').pop().toUpperCase() + '</th>').join('');
+    const header = tableColumns.map(column => '<th>' + column.toUpperCase() + '</th>').join('');
     document.getElementById('tableHeader').innerHTML = header;
 }
 

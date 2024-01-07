@@ -1,10 +1,11 @@
-import { setSearchUrl } from "../components/table/table.js";
 import * as properties from "../properties.js";
+import { setSearchUrl, performSearch } from "../components/table/table.js";
 
-document.getElementById('tab1').addEventListener('click', () =>
-    search(['type', 'display', 'code']));
+document.getElementById('search').addEventListener('input', () => performSearch());
 
-function search(columns) {
+document.getElementById('tab1').addEventListener('click', () => mySearch(['type', 'display', 'code']));
+
+function mySearch(columns) {
     if (properties.mockMode == true) {
         setSearchUrl(properties.coreServiceUrl + '/encounters/findByPatientIdAndDisplay?patientId=', columns);
         return;

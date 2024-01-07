@@ -9,7 +9,7 @@ export function setSearchUrl(url, columns) {
     performSearch();
 }
 
-function performSearch() {
+export function performSearch() {
     if (properties.mockMode == true) {
         updateTableBody(properties.mockData);
     } else {

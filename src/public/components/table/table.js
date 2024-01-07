@@ -1,3 +1,5 @@
+import * as properties from "../../properties.js";
+
 let searchUrl = "";
 let tableColumns = [];
 
@@ -8,8 +10,8 @@ export function setSearchUrl(url, columns) {
 }
 
 function performSearch() {
-    if (mockMode == true) {
-        updateTableBody(mockData);
+    if (properties.mockMode == true) {
+        updateTableBody(properties.mockData);
     } else {
         const url = searchUrl + document.getElementById('search').value;
         fetch(url).then(response => response.json()).then(data => updateTableBody(data));

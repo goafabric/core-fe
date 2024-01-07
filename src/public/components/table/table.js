@@ -14,13 +14,10 @@ export function setSearchUrl(url, columns, callback) {
 }
 
 export function performSearch() {
-    const url = searchUrl + document.getElementById('search').value;
     updateHeader();
-    if (properties.mockMode == true) {
-        updateTableBody(properties.mockData);
-    } else {
-        fetch(url).then(response => response.json()).then(data => updateTableBody(data));
-    }
+    const none = properties.mockMode == true
+                 ? updateTableBody(properties.mockData)
+                 : fetch(searchUrl + document.getElementById('search').value).then(response => response.json()).then(data => updateTableBody(data));
 }
 
 function updateHeader() {

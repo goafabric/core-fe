@@ -1,9 +1,16 @@
 import * as properties from "../properties.js";
 import { setSearchUrl, performSearch } from "../components/table/table.js";
 
-document.getElementById('search').addEventListener('input', () => performSearch());
+addTabListener();
+addSearchListener();
 
-document.getElementById('tab1').addEventListener('click', () => mySearch(['type', 'display', 'code']));
+function addSearchListener() {
+    document.getElement('search').addEventListener('input', () => performSearch());
+}
+
+function addTabListener() {
+    document.getElementById('tab1').addEventListener('click', () => mySearch(['type', 'display', 'code']));
+}
 
 function mySearch(columns) {
     if (properties.mockMode == true) {

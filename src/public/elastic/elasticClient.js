@@ -9,28 +9,10 @@ export function put(documentId, jsonData) {
 }
 
 export function search(query, callback) {
-  const jsonData = {
-    query: {
-      bool: {
-        should: [
-          {
-            wildcard: {
-              familyName: {
-                value: `${query}*`,
-              },
-            },
-          },
-          {
-            fuzzy: {
-              familyName: {
-                value: `${query}`,
-              },
-            },
-          },
-        ],
-      },
-    },
-  };
+  const jsonData = { query: { bool: { should: [
+                            { wildcard: { familyName: { value: `${query}*` } } },
+                            { fuzzy: { familyName: { value: `${query}` } } }
+                        ] } } };
 
   fetch('http://localhost:9200/person_names/_search', {
     method: 'POST',

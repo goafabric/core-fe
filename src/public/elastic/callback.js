@@ -12,6 +12,7 @@ function addSearchListener() {
 function addTabListener() {
     document.getElementById('tab1').addEventListener('click', () => {
         save();
+        console.log(search("Müller"));
     });
 
 }
@@ -28,6 +29,39 @@ function save() {
 function put(documentId, jsonData) {
   return fetch(`http://localhost:9200/person_names/_doc/${documentId}`, {
     method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(jsonData),
+  }).then(response => response.json());
+}
+
+function search(query) {
+  const jsonData = {
+    query: {
+      bool: {
+        should: [
+          {
+            wildcard: {
+              last_name: {
+                value: `${query}*`,
+              },
+            },
+          },
+          {
+            fuzzy: {
+              last_name: {
+                value: `${query}`,
+              },
+            },
+          },
+        ],
+      },
+    },
+  };
+
+  return fetch('http://localhost:9200/person_names/_search', {
+    method: 'POST',
     headers: {
       'Content-Type': 'application/json',
     },

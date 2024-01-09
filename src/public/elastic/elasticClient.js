@@ -1,5 +1,5 @@
 export function put(documentId, jsonData) {
-  return fetch(`http://localhost:9200/person_names/_doc/${documentId}`, {
+  return fetch(`http://localhost:9200/patient_names/_doc/${documentId}`, {
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json',
@@ -14,7 +14,7 @@ export function search(query, callback) {
                             ,{ fuzzy: { familyName: { value: `${query}` } } }
                         ] } } };
 
-  fetch('http://localhost:9200/person_names/_search', {
+  fetch('http://localhost:9200/patient_names/_search', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',

@@ -40,13 +40,9 @@ export function search(query, callback) {
     body: JSON.stringify(jsonData),
   }).then(response => response.json()).then(data => {
         console.log(data);
-        updateBody(data.hits.hits, callback);
+        callback(data.hits.hits);
       }
   );
 }
 
-function updateBody(data, bodyCallbackFunction) {
-    document.getElementById('tableBody').innerHTML =
-        data.map(arElement => '<tr>' + bodyCallbackFunction(arElement._source) + '</tr>').join('');
-}
 

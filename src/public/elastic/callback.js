@@ -13,7 +13,7 @@ function addSearchListener() {
 function addTabListener() {
     document.getElementById('tab1').addEventListener('click', () => {
         save();
-        search("", insertTable);
+        search("", updateBody);
     });
 }
 
@@ -29,11 +29,17 @@ function save() {
     put("2", patient);
 }
 
+function updateBody(data) {
+    document.getElementById('tableBody').innerHTML =
+        data.map(arElement => '<tr>' + insertTable(arElement._source) + '</tr>').join('');
+}
+
+
 function insertTable(patient) {
     return `<td>${patient.givenName}</td> <td>${patient.familyName}</td>`;
 }
 
 function performSearch() {
     const searchValue = document.getElementById('search').value;
-    search(searchValue, insertTable);
+    search(searchValue, updateBody);
 }

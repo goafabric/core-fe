@@ -27,4 +27,14 @@ export function search(query, callback) {
   );
 }
 
+export function createMockData() {
+    var patient = {};
+    patient.givenName = "Hans";
+    patient.familyName = "Müller";
+    put("1", patient);
+
+    patient.givenName = "Erich";
+    patient.familyName = "Meyer";
+    put("2", patient);
+}
 

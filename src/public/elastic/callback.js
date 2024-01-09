@@ -1,6 +1,5 @@
 import * as properties from "../properties.js";
-//import { setSearchUrl, performSearch } from "../components/table/table.js";
-import { put, search } from "./elasticClient.js";
+import { put, search, createMockData } from "./elasticClient.js";
 
 addTabListener();
 addSearchListener();
@@ -12,21 +11,9 @@ function addSearchListener() {
 
 function addTabListener() {
     document.getElementById('tab1').addEventListener('click', () => {
-        save();
+        createMockData();
         search("", updateBody);
     });
-}
-
-function save() {
-    var patient = {};
-
-    patient.givenName = "Hans";
-    patient.familyName = "Müller";
-    put("1", patient);
-
-    patient.givenName = "Erich";
-    patient.familyName = "Meyer";
-    put("2", patient);
 }
 
 function updateBody(data) {

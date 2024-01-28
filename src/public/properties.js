@@ -1,5 +1,5 @@
 export const devMode = true;
-export const mockMode = true;
+export const mockMode = false;
 
 //urls
 export const coreServiceUrl = devMode == true ? 'http://localhost:50800' : '/core';

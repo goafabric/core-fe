@@ -13,11 +13,24 @@ export function setSearchUrl(url, columns, callback) {
     performSearch();
 }
 
-export function performSearch() {
+export async function performSearch() {
     updateHeader();
-    const none = properties.mockMode == true
-                 ? updateBody(properties.mockData)
-                 : fetch(searchUrl + document.getElementById('search').value).then(response => response.json()).then(data => updateBody(data));
+
+    if (properties.mockMode === true) {
+        updateBody(properties.mockData);
+    } else {
+        try {
+            const response = await fetch(searchUrl + document.getElementById('search').value);
+            if (response.status === 302) { // Reload the page if a 302 status code is encountered
+                window.location.reload();
+            } else {
+                const data = await response.json();
+                updateBody(data);
+            }
+        } catch (error) {
+            console.error('Error fetching data:', error);
+        }
+    }
 }
 
 function updateHeader() {

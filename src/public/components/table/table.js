@@ -21,14 +21,11 @@ export async function performSearch() {
     } else {
         try {
             const response = await fetch(searchUrl + document.getElementById('search').value);
-            if (response.status === 302) { // Reload the page if a 302 status code is encountered
-                window.location.reload();
-            } else {
-                const data = await response.json();
-                updateBody(data);
-            }
+            const data = await response.json();
+            updateBody(data);
         } catch (error) {
             console.error('Error fetching data:', error);
+            //window.location.reload();
         }
     }
 }

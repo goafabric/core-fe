@@ -21,12 +21,8 @@ export async function performSearch() {
     } else {
         try {
             const response = await fetch(searchUrl + document.getElementById('search').value);
-            if (response.status === 302) { // If the response is a 302 redirect to login, force the browser to follow it
-                window.location.href = response.headers.get('Location');
-            } else {
-                const data = await response.json();
-                updateBody(data);
-            }
+            const data = await response.json();
+            updateBody(data);
         } catch (error) {
             console.error('Error fetching data:', error);
             //window.location.reload();

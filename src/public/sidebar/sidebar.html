@@ -11,6 +11,10 @@
 
 <body>
     <div id="my-sidebar">
+        <a id="home" href="./logo.html" target="catalogFrame">
+            <i class="material-icons" style="font-size:20px">library_books</i> Home
+        </a>
+        <!--         <a id="home" href="./logo.html" target="catalogFrame" style="display:none;"></a> -->
         <a id="mrc" href="../mrc/mrc.html" target="catalogFrame">
             <i class="material-icons" style="font-size:20px">personal_injury</i> MRC
         </a>
@@ -29,9 +33,12 @@
     </div>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            //document.getElementById('mrc').click();
-            //document.getElementById('my-content').src = "./logo.jpg";
+        document.addEventListener('DOMContentLoaded', async function () {
+            const response = await fetch('/core/')
+            if (response.status === 302) { // If the response is a 302 redirect to login, force the browser to follow it
+                window.location.href = response.headers.get('Location');
+            }
+            document.getElementById('home').click();
         });
     </script>
 </body>

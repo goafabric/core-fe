@@ -1,4 +1,4 @@
-IMAGE_NAME=goafabric/core-fe:1.2.1-SNAPSHOT
+IMAGE_NAME=goafabric/core-fe:1.2.2-SNAPSHOT
 
 #npm install --prefix ./docker @goafabric/core-fe@1.0.3
 

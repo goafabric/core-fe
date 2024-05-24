@@ -1,5 +1,3 @@
-document.addEventListener('DOMContentLoaded', () => document.getElementById('tab1').click());
-
 export function addCellListener() {
     document.getElementById('table').addEventListener('dblclick', function(event) {
         const target = event.target;

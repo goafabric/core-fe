@@ -15,7 +15,7 @@ function addTabListener() {
         setSearchUrl(properties.catalogServiceUrl + '/chargeitems/findByDisplay?display=', ['code', 'display', 'price'], insertChargeItem));
 
     document.getElementById('tab2').addEventListener('click', () =>
-        setSearchUrl(properties.catalogServiceUrl + '/diagnosis/findByDisplay?display=', ['code', 'display', 'shortname'], insertDiagnosis));
+        setSearchUrl(properties.catalogServiceUrl + '/conditions/findByDisplay?display=', ['code', 'display', 'shortname'], insertDiagnosis));
 
     document.getElementById('tab3').addEventListener('click', () =>
          setSearchUrl(properties.catalogServiceUrl + '/insurances/findByDisplay?display=', ['code', 'display', 'shortname'], insertInsurance));

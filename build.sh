@@ -1,6 +1,6 @@
 IMAGE_NAME=goafabric/core-fe:3.3.1-SNAPSHOT
 
-#npm install --prefix ./docker @goafabric/core-fe@1.0.3
+#npm install --prefix ./docker @goafabric/core-fe@3.3.1-SNAPSHOT
 
 docker buildx create --name mybuilder --use && docker buildx build --platform linux/amd64,linux/arm64 -t $IMAGE_NAME -f ./docker/dockerfile --push . ; docker buildx stop mybuilder && docker buildx rm mybuilder
 #docker build -t $IMAGE_NAME . && docker push $IMAGE_NAME

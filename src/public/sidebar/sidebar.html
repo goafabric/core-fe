@@ -11,7 +11,8 @@
 
 <body>
     <div id="my-sidebar">
-        <a id="home" href="../home/home.html" target="catalogFrame">
+        <!-- <a id="home" href="../home/home.html" target="catalogFrame"> -->
+        <a id="home" href="./logo.html" target="catalogFrame">
             <i class="material-icons" style="font-size:20px">library_books</i> Home
         </a>
         <!--         <a id="home" href="./logo.html" target="catalogFrame" style="display:none;"></a> -->
@@ -31,5 +32,15 @@
     <div id="my-content">
         <iframe name="catalogFrame"></iframe>
     </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', async function () {
+            const response = await fetch('/core/')
+            if (response.status === 302) { // If the response is a 302 redirect to login, force the browser to follow it
+                window.location.href = response.headers.get('Location');
+            }
+            document.getElementById('home').click();
+        });
+    </script>
 </body>
 </html>

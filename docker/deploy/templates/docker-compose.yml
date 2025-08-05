@@ -82,7 +82,7 @@ services:
 
   postgres:
     container_name: ${_Values_root_name}-postgres
-    image: postgres:16.0
+    image: postgres:16.9
     restart: 'no'
     ports:
       - 50810:5432
@@ -140,7 +140,7 @@ services:
 
   nginx:
     container_name: ${_Values_root_name}-nginx
-    image: nginx:1.22.1
+    image: nginx:1.29.0
     restart: 'no'
     ports:
       - 8080:80
@@ -154,7 +154,7 @@ services:
 
   core-fe:
     container_name: ${_Values_root_name}-core-fe
-    image: goafabric/core-fe:1.2.0-SNAPSHOT
+    image: goafabric/core-fe:1.2.2-SNAPSHOT
     restart: 'no'
     ports:
       - 80
